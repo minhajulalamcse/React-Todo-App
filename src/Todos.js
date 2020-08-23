@@ -1,18 +1,35 @@
 import React from "react";
 
-const Todos = ({ todos }) => {
+const Todos = ({ todos, handleDelete }) => {
   const notCompletedTodoList = todos.filter((todo) => {
     if (todo.completed === false) {
       return todo;
     }
+    return null;
   });
-  const todoList = notCompletedTodoList.map((todo) => {
-    return (
-      <div className="collection-item">
-        <p>{todo.content}</p>
-      </div>
-    );
-  });
+
+  const todoList = notCompletedTodoList.length ? (
+    notCompletedTodoList.map((todo) => {
+      return (
+        <div className="collection-item" key={todo.id}>
+          <p>
+            {todo.content}
+            <i
+              className="material-icons right red-text pointer"
+              onClick={() => handleDelete(todo.id)}
+            >
+              delete
+            </i>
+          </p>
+        </div>
+      );
+    })
+  ) : (
+    <div className="collection-item">
+      <p>There are no todos left.</p>
+    </div>
+  );
+
   return <div className="collection">{todoList}</div>;
 };
 

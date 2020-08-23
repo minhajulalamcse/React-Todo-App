@@ -12,13 +12,26 @@ class App extends React.Component {
       { id: 4, content: "Go to college", completed: true },
     ],
   };
+
+  handleDelete = (id) => {
+    const todos = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    this.setState({
+      todos,
+    });
+  };
+
   render() {
     return (
       <div className="container">
         <h1 className="blue-grey-text darken-4">TODO APP</h1>
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos} handleDelete={this.handleDelete} />
         <p className="flow-text">Completed</p>
-        <CompletedTodos todos={this.state.todos} />
+        <CompletedTodos
+          todos={this.state.todos}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
