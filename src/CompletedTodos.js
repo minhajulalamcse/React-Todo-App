@@ -1,12 +1,12 @@
 import React from "react";
 
-const Todos = ({ todos }) => {
-  const notCompletedTodoList = todos.filter((todo) => {
-    if (todo.completed === false) {
+const CompletedTodos = ({ todos }) => {
+  const completedTodoList = todos.filter((todo) => {
+    if (todo.completed) {
       return todo;
     }
   });
-  const todoList = notCompletedTodoList.map((todo) => {
+  const todoList = completedTodoList.map((todo) => {
     return (
       <div className="collection-item">
         <p>{todo.content}</p>
@@ -16,4 +16,4 @@ const Todos = ({ todos }) => {
   return <div className="collection">{todoList}</div>;
 };
 
-export default Todos;
+export default CompletedTodos;

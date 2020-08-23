@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Todos from "./Todos";
+import CompletedTodos from "./CompletedTodos";
 
 class App extends React.Component {
   state = {
@@ -16,6 +17,8 @@ class App extends React.Component {
       <div className="container">
         <h1 className="blue-grey-text darken-4">TODO APP</h1>
         <Todos todos={this.state.todos} />
+        <p className="flow-text">Completed</p>
+        <CompletedTodos todos={this.state.todos} />
       </div>
     );
   }
