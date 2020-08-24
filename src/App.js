@@ -1,16 +1,13 @@
 import React from "react";
 import "./App.css";
+
 import Todos from "./Todos";
 import CompletedTodos from "./CompletedTodos";
+import AddTodo from "./AddTodo";
 
 class App extends React.Component {
   state = {
-    todos: [
-      { id: 1, content: "Watch TV", completed: false },
-      { id: 2, content: "Buy milk", completed: false },
-      { id: 3, content: "Go to school", completed: true },
-      { id: 4, content: "Go to college", completed: true },
-    ],
+    todos: [],
   };
   handleComplete = (id) => {
     const todos = this.state.todos.filter((todo) => {
@@ -32,21 +29,39 @@ class App extends React.Component {
     });
   };
 
+  addTodo = (todo) => {
+    todo.id = Math.random();
+    todo.completed = false;
+    const todos = [...this.state.todos, todo];
+    this.setState({
+      todos,
+    });
+  };
   render() {
+    let showCompletedTodosComponent = false;
+    this.state.todos.map((todo) => {
+      if (todo.completed) showCompletedTodosComponent = true;
+    });
     return (
       <div className="container">
         <h1 className="blue-grey-text darken-4">TODO APP</h1>
+        <AddTodo addTodo={this.addTodo} />
         <Todos
           todos={this.state.todos}
           handleComplete={this.handleComplete}
           handleDelete={this.handleDelete}
         />
-        <p className="flow-text">Completed</p>
-        <CompletedTodos
-          todos={this.state.todos}
-          handleComplete={this.handleComplete}
-          handleDelete={this.handleDelete}
-        />
+
+        {showCompletedTodosComponent ? (
+          <div>
+            <p className="flow-text">Completed</p>
+            <CompletedTodos
+              todos={this.state.todos}
+              handleComplete={this.handleComplete}
+              handleDelete={this.handleDelete}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
