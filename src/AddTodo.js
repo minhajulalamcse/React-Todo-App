@@ -22,7 +22,7 @@ class AddTodo extends Component {
   };
   render() {
     return (
-      <div className="row">
+      <div className="row card z-depth-0">
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <input

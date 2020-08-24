@@ -10,6 +10,7 @@ class App extends React.Component {
     todos: [],
   };
   handleComplete = (id) => {
+    console.log(id);
     const todos = this.state.todos.filter((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
@@ -37,6 +38,17 @@ class App extends React.Component {
       todos,
     });
   };
+  markAllAsCompleted = () => {
+    const todos = this.state.todos.map((todo) => {
+      if (!todo.completed) {
+        todo.completed = true;
+      }
+      return todo;
+    });
+    this.setState({
+      todos,
+    });
+  };
   render() {
     let showCompletedTodosComponent = false;
     this.state.todos.map((todo) => {
@@ -50,6 +62,7 @@ class App extends React.Component {
           todos={this.state.todos}
           handleComplete={this.handleComplete}
           handleDelete={this.handleDelete}
+          markAllAsCompleted={this.markAllAsCompleted}
         />
 
         {showCompletedTodosComponent ? (
