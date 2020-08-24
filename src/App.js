@@ -12,7 +12,17 @@ class App extends React.Component {
       { id: 4, content: "Go to college", completed: true },
     ],
   };
-
+  handleComplete = (id) => {
+    const todos = this.state.todos.filter((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    this.setState({
+      todos,
+    });
+  };
   handleDelete = (id) => {
     const todos = this.state.todos.filter((todo) => {
       return todo.id !== id;
@@ -26,10 +36,15 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1 className="blue-grey-text darken-4">TODO APP</h1>
-        <Todos todos={this.state.todos} handleDelete={this.handleDelete} />
+        <Todos
+          todos={this.state.todos}
+          handleComplete={this.handleComplete}
+          handleDelete={this.handleDelete}
+        />
         <p className="flow-text">Completed</p>
         <CompletedTodos
           todos={this.state.todos}
+          handleComplete={this.handleComplete}
           handleDelete={this.handleDelete}
         />
       </div>
