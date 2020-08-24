@@ -4,6 +4,7 @@ import "./App.css";
 import Todos from "./Todos";
 import CompletedTodos from "./CompletedTodos";
 import AddTodo from "./AddTodo";
+import Buttons from "./Buttons";
 
 class App extends React.Component {
   state = {
@@ -49,6 +50,14 @@ class App extends React.Component {
       todos,
     });
   };
+  deleteCompleteTodos = () => {
+    const todos = this.state.todos.filter((todo) => {
+      return todo.completed === false;
+    });
+    this.setState({
+      todos,
+    });
+  };
   render() {
     let showCompletedTodosComponent = false;
     this.state.todos.map((todo) => {
@@ -58,11 +67,15 @@ class App extends React.Component {
       <div className="container">
         <h1 className="blue-grey-text darken-4">TODO APP</h1>
         <AddTodo addTodo={this.addTodo} />
+        <Buttons
+          markAllAsCompleted={this.markAllAsCompleted}
+          deleteCompleteTodos={this.deleteCompleteTodos}
+        />
+
         <Todos
           todos={this.state.todos}
           handleComplete={this.handleComplete}
           handleDelete={this.handleDelete}
-          markAllAsCompleted={this.markAllAsCompleted}
         />
 
         {showCompletedTodosComponent ? (

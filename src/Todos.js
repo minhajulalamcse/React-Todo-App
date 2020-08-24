@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todos = ({ todos, handleComplete, handleDelete, markAllAsCompleted }) => {
+const Todos = ({ todos, handleComplete, handleDelete }) => {
   const notCompletedTodoList = todos.filter((todo) => {
     if (todo.completed === false) {
       return todo;
@@ -36,17 +36,7 @@ const Todos = ({ todos, handleComplete, handleDelete, markAllAsCompleted }) => {
     </div>
   );
 
-  return (
-    <div>
-      <p onClick={() => markAllAsCompleted()} className="btn blue btn-large">
-        <i className="material-icons left white-text pointer">
-          check_circle_outline
-        </i>
-        Mark all as completed
-      </p>
-      <div className="collection">{todoList}</div>
-    </div>
-  );
+  return <div className="collection">{todoList}</div>;
 };
 
 export default Todos;
