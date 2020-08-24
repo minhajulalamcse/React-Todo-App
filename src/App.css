@@ -43,5 +43,25 @@
 
 .card {
   padding: 20px 20px 10px 20px;
-  border: 1px solid gainsboro;
+  border: 1px solid rgb(245, 245, 245);
+}
+
+.markAllAsCompleted {
+  background: white;
+  color: indigo;
+}
+
+.deleteAllCompletedTodos {
+  background: white;
+  color: indigo;
+}
+
+.markAllAsCompleted:hover {
+  background: green;
+  color: white;
+}
+
+.deleteAllCompletedTodos:hover {
+  background: red;
+  color: white;
 }

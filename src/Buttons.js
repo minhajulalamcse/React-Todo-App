@@ -5,18 +5,16 @@ const Buttons = ({ markAllAsCompleted, deleteCompleteTodos }) => {
     <div className="row">
       <p
         onClick={() => markAllAsCompleted()}
-        className="col s6 btn green btn-large"
+        className="btn  btn-large col s6 markAllAsCompleted"
       >
-        <i className="material-icons left white-text pointer">
-          check_circle_outline
-        </i>
+        <i className="material-icons left  pointer">check_circle_outline</i>
         Mark all as completed
       </p>
       <p
         onClick={() => deleteCompleteTodos()}
-        className="col s6 btn red btn-large"
+        className="btn btn-large col s6 deleteAllCompletedTodos"
       >
-        <i className="material-icons left white-text pointer">check_circle</i>
+        <i className="material-icons left  pointer">check_circle</i>
         DELETE ALL COMPLETED TODOS
       </p>
     </div>

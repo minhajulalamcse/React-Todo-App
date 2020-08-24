@@ -31,7 +31,7 @@ class AddTodo extends Component {
               onChange={this.handleChange}
               className="col s10"
             />
-            <button className="col s2 waves-effect waves-light btn-large">
+            <button className="col s2 waves-effect waves-light btn-large indigo">
               ADD TODO
             </button>
           </div>

@@ -65,7 +65,7 @@ class App extends React.Component {
     });
     return (
       <div className="container">
-        <h1 className="blue-grey-text darken-4">TODO APP</h1>
+        <h1 className="indigo-text darken-4">TODO APP</h1>
         <AddTodo addTodo={this.addTodo} />
         <Buttons
           markAllAsCompleted={this.markAllAsCompleted}
