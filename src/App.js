@@ -64,7 +64,7 @@ class App extends React.Component {
       if (todo.completed) showCompletedTodosComponent = true;
     });
     return (
-      <div className="container">
+      <div className="container App">
         <h1 className="indigo-text darken-4">TODO APP</h1>
         <AddTodo addTodo={this.addTodo} />
         <Buttons
